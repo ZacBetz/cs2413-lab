@@ -49,4 +49,16 @@ struct TreeNode {
 
 int maxDepth(struct TreeNode* root) {
   // TODO: implement
+  if(root==NULL)
+    return 0;
+
+  int leftCount = 1 + maxDepth(root->left);
+  int rightCount = 1 + maxDepth(root->right);  
+
+  if(leftCount > rightCount)
+    return leftCount;
+  else if(rightCount > leftCount)
+    return rightCount;
+  else if(rightCount == leftCount)
+    return leftCount;
 }
